@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+  #ここで記述されたメソッドは全てのControllerで使用可能になる
   include SessionsHelper
   
   private
@@ -8,5 +8,9 @@ class ApplicationController < ActionController::Base
     unless logged_in?
     redirect_to login_url
     end
-  end  
+  end
+  
+  def counts(user)
+    @count_microposts = user.microposts.count
+  end
 end

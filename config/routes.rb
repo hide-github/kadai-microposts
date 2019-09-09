@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   #その他
   get 'signup', to: 'users#new'
   resources :users, only: [:index, :show, :new, :create]
+  
+  #Micropost用
+  resources :microposts, only: [:create, :destroy]
+  
 end
