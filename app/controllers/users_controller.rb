@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      flash[:success] = 'ユーザを登録しました(users_controller)'
+      flash[:success] = 'ユーザを登録しました'
       redirect_to @user
     else
       flash.now[:danger]
@@ -42,10 +42,10 @@ class UsersController < ApplicationController
   def likes
     if current_user == User.find(params[:id])
       @user = User.find(params[:id])
-      @micropost_favorites = current_user.feed_microposts.order(id: :desc).page(params[:page])
+      @micropost_favorites = current_user.feed_favorites.order(id: :desc).page(params[:page])
     else
       @user = User.find(params[:id])
-      @micropost_favorites = @user.feed_microposts.order(id: :desc).page(params[:page])
+      @micropost_favorites = @user.feed_favorites.order(id: :desc).page(params[:page])
     end
   end
   

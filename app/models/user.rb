@@ -56,7 +56,7 @@ class User < ApplicationRecord
   end
 
   def feed_favorites
-    Micropost.where(user_id: self.favorite_micropost_ids + [self.id])
+    Micropost.where(id: self.favorite_micropost_ids)
   end
   
 end
